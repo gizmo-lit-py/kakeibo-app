@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>取引一覧</h2>
+
+  <p><a href="/add">+ 追加する</a></p>
+
+  {% if transactions %}
+    <ul>
+      {% for t in transactions %}
+        <li>
+          {{ t.date.strftime("%Y-%m-%d %H:%M") }} /
+          {{ "支出" if t.kind == "expense" else "収入" }}
+          {{ t.category or "カテゴリなし" }} /
+          {{ t.amount }}円
+
+          <a href="/edit/{{ t.id}}">編集</a>
+
+          {% if t.memo %}- {{ t.memo }}{% endif %}
+
+          <form action="/delete/{{ t.id }}" method="post" style="display:inline;">
+            <button type="submit" onclick="return confirm('削除する')">削除</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>まだ取引がありません</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>取引を編集</h2>
+
+  <form method="post">
+
+    <div>
+      <label>金額</label><br>
+      <input type="number" name="amount" required value="{{ t.amount }}">
+    </div>
+
+    <div>
+      <label>種類</label><br>
+      <select name="kind" required>
+        <option value="expense">支出</option>
+        <option value="income">収入</option>
+      </select>
+    </div>
+
+    <div>
+      <label>カテゴリ</label><br>
+      <input type="text" name="category" value="{{ t.category or '' }}">
+    </div>
+
+    <div>
+      <label>メモ</label><br>
+      <input type="text" name="memo" value="{{ t.memo or '' }}">
+    </div>
+
+    <button type="submit">更新</button>
+    <a href="/transactions">戻る</a>
+
+  </form>
+{% endblock %}

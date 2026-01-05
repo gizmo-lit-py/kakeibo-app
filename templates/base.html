@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>家計簿アプリ</title>
+    </head>
+    <body>
+
+        <h1>家計簿</h1>
+
+        {% if current_user.is_authenticated %}
+          <p>ログイン中: {{ current_user.username }}</p>
+          
+          <p>
+            <a href="/transactions">取引一覧</a>
+            <a href="/add">取引を追加</a>
+            <a href="/logout">ログアウト</a>
+            
+          </p>
+        {% else %}
+          <a href="/login">ログイン</a>
+          <a href="/register">新規登録</a>
+        {% endif %}
+
+        <hr>
+
+        {% block content %}{% endblock %}
+    </body>
+</html>
+        

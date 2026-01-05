@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>取引を追加</h2>
+
+  <form method="post">
+    <div>
+        <label>金額</label><br>
+        <input type="number" name="amount" required>
+    </div>
+
+    <div>
+        <label>種類</label><br>
+        <select name="kind" required>
+            <option value="expense">支出</option>
+            <option value="income">収入</option>
+        </select>
+    </div>
+
+    <div>
+        <label>カテゴリ</label><br>
+        <input type="text" name="category" placeholder="例：食費">
+    </div>
+
+    <div>
+        <label>メモ</label><br>
+        <input type="text" name="memo" placeholder="例：コンビニ">
+    </div>
+
+    <button type="submit">保存</button>
+  </form>
+{% endblock %}
